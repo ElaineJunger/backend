@@ -27,9 +27,9 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
+ 
   <build>
-    <finalName>demo</finalName>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>org.wildfly.swarm</groupId>
