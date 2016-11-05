@@ -1,23 +1,14 @@
 package br.com.desafioweb.greeting.ws;
 
-import java.util.concurrent.atomic.AtomicLong;
-
-import javax.ejb.Stateless;
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 
-@Stateless
 @WebService(name = "greetingservice")
 
-public class GreetingImpl implements GreetingService {
-	
-     private static final String template = "Hello, %s!";
-     private static final AtomicLong counter = new AtomicLong();
-     
-     @Override
-     public Greeting greeting(String name) {
-          Greeting greeting = new Greeting();
-          greeting.setId(counter.incrementAndGet());
-          greeting.setContent(String.format(template, name));
-          return greeting;
-     }
+	public interface GreetingService {
+	@WebMethod(operationName="greetingHello")
+	@WebResult(name="greetingResult", partName="payload")
+	public Greeting greeting(@WebParam(name="name")String name);
 }
